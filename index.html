@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>andrivet jean-baptiste</title>
     <style>
-        /* Base Windows 95 Design Framework */
+        /* Base Windows 95 Graphical Framework */
         * {
             box-sizing: border-box;
             font-family: "Arial", "Tahoma", sans-serif;
@@ -122,9 +122,9 @@
         }
 
         h1 {
-            font-size: 22px;
+            font-size: 24px;
             font-weight: bold;
-            margin: 0 0 4px 0;
+            margin: 0 0 2px 0;
             color: #000080;
         }
 
@@ -140,7 +140,7 @@
         h2 {
             font-size: 13px;
             font-weight: bold;
-            margin: 18px 0 10px 0;
+            margin: 16px 0 8px 0;
             color: #000000;
             border-bottom: 1px solid #808080;
             padding-bottom: 2px;
@@ -189,18 +189,18 @@
         .resume-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 6px;
+            margin-top: 4px;
             margin-bottom: 10px;
         }
 
         .resume-table td {
-            padding: 8px 4px;
+            padding: 6px 4px;
             vertical-align: top;
             border-bottom: 1px dashed #d0d0d0;
         }
 
         .col-date {
-            width: 100px;
+            width: 85px;
             font-weight: bold;
             color: #000080;
         }
@@ -228,24 +228,24 @@
             font-size: 11px;
         }
 
-        /* Elements strictly controlled via JS/CSS for rendering state segregation */
         .print-link-header {
             display: none;
         }
 
         /* -------------------------------------------------- */
-        /* STRIPIFIED ONE-PAGE RECRUITMENT PRINT CONFIG       */
+        /* STRICT ONE-PAGE COMPACT PRINT GRID ARCHITECTURE    */
         /* -------------------------------------------------- */
         @media print {
             @page {
                 size: A4;
-                margin: 10mm 15mm 10mm 15mm;
+                margin: 8mm 12mm 8mm 12mm;
             }
 
             body, html {
                 background: #ffffff !important;
                 min-height: 0 !important;
                 padding: 0 !important;
+                overflow: visible !important;
             }
 
             .app-container {
@@ -260,73 +260,98 @@
                 display: none !important; 
             }
 
+            /* Transforms container into a beautiful dual-column sheet on paper */
             .content-frame {
                 border: none !important;
                 box-shadow: none !important;
                 padding: 0 !important;
                 background: #ffffff !important;
+                display: grid !important;
+                grid-template-columns: 1fr 1.2fr !important;
+                column-gap: 16px !important;
+                row-gap: 0 !important;
             }
 
-            /* Highly clean, unrolled structural sequence */
+            .print-link-header {
+                display: block !important;
+                grid-column: span 2 !important;
+                text-align: center;
+                background: #f5f5f5;
+                border: 1px solid #000000;
+                padding: 5px;
+                margin-bottom: 10px;
+                font-weight: bold;
+                font-size: 9.5pt !important;
+            }
+
+            /* Flow mapping alignment */
+            #sec-profil {
+                grid-column: span 2 !important;
+                margin-bottom: 6px !important;
+            }
+
+            #sec-formations {
+                grid-column: 1 !important;
+                grid-row: 3;
+            }
+
+            #sec-competences {
+                grid-column: 1 !important;
+                grid-row: 4;
+            }
+
+            #sec-experiences {
+                grid-column: 2 !important;
+                grid-row: 3 / span 2;
+            }
+
             .content-section {
                 display: block !important;
                 page-break-inside: avoid !important;
-                margin-bottom: 10px !important;
-            }
-
-            /* Prominent portfolio link indicator on print version */
-            .print-link-header {
-                display: block !important;
-                text-align: center;
-                background: #f0f0f0;
-                border: 1px solid #000000;
-                padding: 6px;
-                margin-bottom: 15px;
-                font-weight: bold;
-                font-size: 10pt !important;
+                margin-bottom: 8px !important;
             }
 
             h1 {
-                font-size: 22pt !important;
+                font-size: 20pt !important;
                 color: #000000 !important;
                 text-align: center;
                 margin-bottom: 2px !important;
             }
 
             .subtitle {
-                font-size: 14pt !important;
+                font-size: 12pt !important;
                 color: #000000 !important;
                 text-align: center;
                 border-bottom: 2px solid #000000 !important;
-                margin-bottom: 12px !important;
+                margin-bottom: 8px !important;
                 padding-bottom: 2px !important;
             }
 
             h2 {
-                font-size: 11pt !important;
+                font-size: 10pt !important;
                 color: #000000 !important;
                 border-bottom: 1px solid #000000 !important;
-                margin-top: 12px !important;
-                margin-bottom: 6px !important;
+                margin-top: 8px !important;
+                margin-bottom: 4px !important;
                 padding-bottom: 1px !important;
             }
 
             p, li, td {
-                font-size: 9.5pt !important;
-                line-height: 1.35 !important;
-                margin-bottom: 4px !important;
+                font-size: 8.5pt !important;
+                line-height: 1.3 !important;
+                margin-bottom: 3px !important;
             }
 
             ul {
-                margin: 2px 0 6px 0 !important;
-                padding-left: 18px !important;
+                margin: 2px 0 4px 0 !important;
+                padding-left: 14px !important;
             }
 
             .group-box {
                 border: 1px solid #000000 !important;
                 background: #ffffff !important;
-                padding: 8px !important;
-                margin-bottom: 10px !important;
+                padding: 6px !important;
+                margin-bottom: 6px !important;
             }
 
             .group-box-label {
@@ -337,7 +362,7 @@
                 display: flex !important;
                 flex-wrap: wrap !important;
                 justify-content: space-between !important;
-                gap: 5px !important;
+                gap: 4px !important;
             }
 
             .grid-cell {
@@ -347,23 +372,17 @@
             }
 
             .resume-table td {
-                padding: 4px 0 !important;
+                padding: 3px 0 !important;
                 border-bottom: 1px solid #eeeeee !important;
             }
 
             .col-date {
                 color: #000000 !important;
-                width: 85px !important;
+                width: 75px !important;
             }
-            
+
             .skills-print-wrapper {
-                display: flex !important;
-                gap: 20px !important;
-            }
-            
-            .skills-print-wrapper > div {
-                flex: 1 !important;
-                margin-bottom: 0 !important;
+                display: block !important;
             }
         }
     </style>
@@ -391,7 +410,7 @@
 
         <div class="content-frame">
             
-            <!-- Global Target URL Callback Block for Print Layout -->
+            <!-- Link layout triggered strictly on PDF render state -->
             <div class="print-link-header">
                 Consulter le portfolio numérique complet et interactif sur : https://jbandrivet.github.io/cv/
             </div>
@@ -408,7 +427,7 @@
                         <div class="grid-cell"><strong>E-mail :</strong> jeanbaptisteandrivet@gmail.com</div>
                         <div class="grid-cell"><strong>Adresse :</strong> 73440 Les Belleville</div>
                         <div class="grid-cell"><strong>Mobilité :</strong> Permis B - Véhiculé</div>
-                        <div class="grid-cell hide-on-print" style="grid-column: span 2;"><strong>Site Portfolio :</strong> <a href="https://jbandrivet.github.io/cv/" target="_blank">jbandrivet.github.io/cv/</a></div>
+                        <div class="grid-cell hide-on-print" style="grid-column: span 2;"><strong>Portfolio :</strong> <a href="https://jbandrivet.github.io/cv/" target="_blank">jbandrivet.github.io/cv/</a></div>
                     </div>
                 </div>
 
@@ -430,7 +449,7 @@
                         <td class="col-date">2023 - 2024</td>
                         <td>
                             <strong>Assistant Administrateur Réseaux (Stage)</strong><br>
-                            <em>Mairie de Saint-Martin-de-Belleville (Les Belleville, Savoie)</em>
+                            <em>Mairie de Saint-Martin-de-Belleville (Savoie)</em>
                             <ul>
                                 <li>Gestion de l'annuaire Active Directory (provisioning de comptes utilisateurs, attributions de privilèges, déploiement de GPO).</li>
                                 <li>Support technique de niveaux 1 et 2 auprès des agents municipaux.</li>
@@ -442,10 +461,10 @@
                     <tr>
                         <td class="col-date">Depuis 2023</td>
                         <td>
-                            <strong>Administrateur de Plateforme d'Auto-Hébergement (Home Lab)</strong><br>
-                            <em>Projets techniques autonomes</em>
+                            <strong>Administrateur de Plateforme d'Auto-Hébergement</strong><br>
+                            <em>Home Lab Personnel</em>
                             <ul>
-                                <li>Architecture et supervision d'hyperviseurs de type 1 via <strong>Proxmox VE</strong> et d'environnements sous <strong>Hyper-V</strong>.</li>
+                                <li>Architecture et supervision d'hyperviseurs de type 1 via Proxmox VE et d'environnements sous Hyper-V.</li>
                                 <li>Administration de serveurs Linux (Debian, Ubuntu) et d'instances Windows Server.</li>
                                 <li>Conception de scripts de maintenance et d'automatisation des tâches sous Bash et PowerShell.</li>
                                 <li>Sécurisation des flux, gestion des certificats et isolation réseau par reverse proxy Nginx.</li>
@@ -463,29 +482,29 @@
                     <tr>
                         <td class="col-date">2025 - 2026</td>
                         <td>
-                            <strong>Bachelor 3 Administration Infrastructures & Réseaux</strong><br>
-                            <em>Ynov Campus, Lyon</em> - Gestion des architectures hybrides, sécurité des systèmes critiques et administration systèmes avancée.
+                            <strong>Bachelor 3 Admin. Infrastructures & Réseaux</strong><br>
+                            <em>Ynov Campus, Lyon</em>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-date">2023 - 2025</td>
                         <td>
-                            <strong>BTS SIO (Services Informatiques aux Organisations) - Option SISR</strong><br>
-                            <em>Lycée Saint-Exupéry, Saint-Raphaël</em> - Gestion de solutions d'infrastructure, configuration réseau et services applicatifs d'entreprise.
+                            <strong>BTS SIO - Option SISR</strong><br>
+                            <em>Lycée Saint-Exupéry, Saint-Raphaël</em>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-date">2023</td>
                         <td>
-                            <strong>Licence Professionnelle STMO (Systèmes Télécoms et Micro-Ondes)</strong><br>
-                            <em>Université de Limoges</em> - Analyse de signal, chaînes de transmission radiofréquence, architectures micro-ondes et télécommunications.
+                            <strong>Licence Professionnelle STMO</strong><br>
+                            <em>Université de Limoges</em> - Systèmes Télécoms et Micro-Ondes.
                         </td>
                     </tr>
                     <tr>
                         <td class="col-date">2021</td>
                         <td>
                             <strong>BTS Systèmes Photoniques</strong><br>
-                            <em>Grenoble</em> - Optique de précision, instrumentation embarquée, sources lasers et chaînes d'acquisition photo-électriques.
+                            <em>Grenoble</em> - Optique de précision et chaînes d'acquisition.
                         </td>
                     </tr>
                 </table>
@@ -496,39 +515,39 @@
                 <h2>Expertise Technique</h2>
                 
                 <div class="skills-print-wrapper">
-                    <div class="group-box" style="margin-bottom:10px;">
+                    <div class="group-box" style="margin-bottom:6px;">
                         <div class="group-box-label">Systèmes & Virtualisation</div>
                         <ul>
-                            <li>Hyperviseurs : Proxmox VE, Hyper-V, VMware ESXi</li>
-                            <li>Systèmes : Linux (Debian, Ubuntu), Windows Server</li>
-                            <li>Services : Active Directory, GPO, Droits et Privilèges</li>
+                            <li>Proxmox VE, Hyper-V, VMware ESXi</li>
+                            <li>Linux (Debian, Ubuntu), Windows Server</li>
+                            <li>Active Directory, GPO, Droits & Privilèges</li>
                         </ul>
                     </div>
                     
-                    <div class="group-box" style="margin-bottom:10px;">
+                    <div class="group-box" style="margin-bottom:6px;">
                         <div class="group-box-label">Réseaux & Sécurité</div>
                         <ul>
-                            <li>Routage & Protocoles : OSPF, VLAN, NAT, DHCP</li>
-                            <li>Sécurisation : Filtrage Pare-feu (pfSense, WatchGuard), ACL</li>
-                            <li>Tunnels : VPN d'infrastructure (WireGuard, OpenVPN)</li>
+                            <li>Routage OSPF, VLAN, NAT, DHCP</li>
+                            <li>Pare-feu (pfSense, WatchGuard), ACL</li>
+                            <li>VPN (WireGuard, OpenVPN)</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="group-box" style="margin-bottom:14px;">
-                    <div class="group-box-label">Supervision & Outils de Production</div>
-                    <p style="margin: 0;">
-                        Déploiement de solutions de métrologie (LibreNMS, Zabbix) et d'outils de gestion de parc et d'accès (GLPI, Apache Guacamole). Scripting d'automatisation en Bash et PowerShell.
+                <div class="group-box" style="margin-bottom:8px;">
+                    <div class="group-box-label">Supervision & Outils</div>
+                    <p style="margin: 0; padding: 2px 0;">
+                        Métrologie et gestion de parc (LibreNMS, Zabbix, GLPI, Apache Guacamole). Scripting Bash et PowerShell.
                     </p>
                 </div>
 
-                <h2>Automatisme, Asservissement Électronique & Projets Instrumentaux</h2>
+                <h2>Automatisme & Systèmes Instrumentaux</h2>
                 <p>
-                    Mise en œuvre de compétences en développement embarqué appliqué à la motorisation fine et aux systèmes de positionnement d'outils d'astronomie instrumentale :
+                    Développement embarqué appliqué aux systèmes de positionnement d'outils d'astronomie instrumentale :
                 </p>
                 <ul>
-                    <li><strong>Asservissement de Précision :</strong> Intégration, câblage et programmation d'algorithmes de suivi sidéral automatisé dédiés aux montures de télescopes via un firmware sur mesure conçu par mes soins.</li>
-                    <li><strong>Pilotage Matériel de Moteurs :</strong> Développement et calibrage de profils de rampes cinématiques sur microcontrôleurs (architectures Arduino / ESP32) exploitant la bibliothèque logicielle `AccelStepper` pour la commande fine de moteurs pas-à-pas.</li>
+                    <li><strong>Asservissement de Précision :</strong> Programmation d'algorithmes de suivi sidéral automatisé pour montures de télescopes via un firmware sur mesure conçu par mes soins.</li>
+                    <li><strong>Pilotage Matériel :</strong> Profils de rampes cinématiques sur microcontrôleurs (Arduino / ESP32) via la bibliothèque AccelStepper pour la commande fine de moteurs pas-à-pas.</li>
                 </ul>
             </div>
 
