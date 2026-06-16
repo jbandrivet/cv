@@ -3,148 +3,741 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Jean-Baptiste Andrivet - Administrateur Systèmes et Réseaux</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Jean-Baptiste Andrivet - Administrateur Systemes et Reseaux</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
-        body { font-family: 'Roboto', sans-serif; background-color: #f3f4f6; }
-        @page { margin: 0; size: A4; }
-        @media print {
-            body { background-color: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .no-print { display: none !important; }
-            .page-container { box-shadow: none; margin: 0; width: 100%; max-width: 100%; min-height: 100vh; }
-            .bg-slate-900 { background-color: #0f172a !important; color: white !important; }
-            .bg-blue-600 { background-color: #2563eb !important; }
-            .text-blue-600 { color: #2563eb !important; }
+        /* Base Windows 95 Styles */
+        * {
+            box-sizing: border-box;
+            font-family: "Arial", "Tahoma", sans-serif;
+            font-size: 12px;
+            color: #000000;
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: none;
         }
-        .page-container { width: 210mm; min-height: 297mm; margin: 2rem auto; background: white; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); display: flex; flex-direction: row; overflow: hidden; }
-        @media screen and (max-width: 768px) { .page-container { flex-direction: column; width: 100%; margin: 0; } }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #008080; /* Classic Teal Desktop Background */
+            overflow: hidden;
+        }
+
+        /* Desktop Layout */
+        .desktop {
+            width: 100%;
+            height: calc(100% - 40px);
+            padding: 20px;
+            position: relative;
+            display: block;
+        }
+
+        /* Desktop Icons */
+        .desktop-icons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 80px;
+        }
+
+        .icon {
+            width: 75px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .icon-graphic {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 4px auto;
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            position: relative;
+        }
+
+        .icon-cv .icon-graphic::before {
+            content: "TXT";
+            font-size: 9px;
+            font-weight: bold;
+            position: absolute;
+            bottom: 2px;
+            left: 2px;
+            background: #000080;
+            color: #ffffff;
+            padding: 1px;
+        }
+
+        .icon-astro .icon-graphic::before {
+            content: "EXE";
+            font-size: 9px;
+            font-weight: bold;
+            position: absolute;
+            bottom: 2px;
+            left: 2px;
+            background: #ff0000;
+            color: #ffffff;
+            padding: 1px;
+        }
+
+        .icon-label {
+            color: #ffffff;
+            font-size: 11px;
+            text-shadow: 1px 1px #000000;
+            word-wrap: break-word;
+            padding: 2px;
+        }
+
+        .icon:active .icon-label {
+            background-color: #000080;
+            outline: 1px dotted #ffffff;
+        }
+
+        /* Windows 95 Window Styling */
+        .window {
+            position: absolute;
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #5a5a5a #5a5a5a #ffffff;
+            box-shadow: inset 1px 1px #ffffff, inset -1px -1px #0a0a0a, 1px 1px 0px #000000;
+            min-width: 300px;
+            display: none;
+            z-index: 10;
+        }
+
+        .window.active {
+            display: block;
+        }
+
+        #cv-window {
+            width: 780px;
+            max-width: 95%;
+            top: 30px;
+            left: 120px;
+        }
+
+        #astro-window {
+            width: 500px;
+            max-width: 90%;
+            top: 80px;
+            left: 200px;
+        }
+
+        .title-bar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            padding: 3px 3px 3px 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .title-bar-text {
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .win-btn {
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            box-shadow: inset 1px 1px #dfdfdf;
+            width: 16px;
+            height: 14px;
+            font-size: 9px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .win-btn:active {
+            border-color: #808080 #ffffff #ffffff #808080;
+            box-shadow: none;
+            padding-top: 1px;
+            padding-left: 1px;
+        }
+
+        .menu-bar {
+            display: flex;
+            padding: 2px 6px;
+            border-bottom: 1px solid #808080;
+            gap: 12px;
+            background-color: #c0c0c0;
+        }
+
+        .menu-item {
+            cursor: default;
+            padding: 2px 4px;
+        }
+
+        .menu-item::first-letter {
+            text-decoration: underline;
+        }
+
+        .window-body {
+            padding: 10px;
+            background-color: #c0c0c0;
+        }
+
+        /* Tabs Style */
+        .tab-container {
+            display: flex;
+            margin-bottom: -2px;
+            position: relative;
+            z-index: 2;
+            padding-left: 4px;
+        }
+
+        .tab {
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 transparent #ffffff;
+            padding: 4px 12px;
+            margin-right: 2px;
+            cursor: pointer;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+        }
+
+        .tab.active-tab {
+            font-weight: bold;
+            padding-bottom: 5px;
+            margin-top: -2px;
+            z-index: 3;
+            background-color: #c0c0c0;
+        }
+
+        .tab-content-wrapper {
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            box-shadow: inset 1px 1px #dfdfdf;
+            padding: 14px;
+            min-height: 420px;
+            background:#ffffff; /* Legible for ATS parsing systems */
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active-panel {
+            display: block;
+        }
+
+        .fieldset-container {
+            border: 2px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            padding: 12px;
+            margin-bottom: 14px;
+            position: relative;
+        }
+
+        .fieldset-title {
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            background-color: #ffffff;
+            padding: 0 4px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 4px 0;
+            color: #000080;
+        }
+
+        <h2> {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            color: #1084d0;
+            border-bottom: 1px solid #808080;
+            padding-bottom: 2px;
+        }
+
+        p {
+            margin: 0 0 8px 0;
+            line-height: 1.4;
+        }
+
+        ul {
+            margin: 4px 0 10px 0;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 6px;
+        }
+
+        .data-table th {
+            background-color: #c0c0c0;
+            border: 1px solid #808080;
+            padding: 4px 6px;
+            text-align: left;
+            font-weight: bold;
+            box-shadow: inset 1px 1px #ffffff;
+        }
+
+        .data-table td {
+            border: 1px solid #dfdfdf;
+            padding: 6px;
+            vertical-align: top;
+        }
+
+        .date-col {
+            width: 90px;
+            font-weight: bold;
+            color: #000080;
+        }
+
+        /* Taskbar Styling */
+        .taskbar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background-color: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            box-shadow: inset 0 1px #dfdfdf;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px 6px;
+            z-index: 100;
+        }
+
+        .start-btn {
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            box-shadow: inset 1px 1px #dfdfdf;
+            font-weight: bold;
+            font-size: 12px;
+            padding: 2px 8px 2px 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            height: 28px;
+        }
+
+        .start-btn-logo {
+            width: 14px;
+            height: 12px;
+            background-color: #ff0000;
+            border-right: 2px solid #000000;
+            position: relative;
+        }
+
+        .start-btn:active {
+            border-color: #808080 #ffffff #ffffff #808080;
+            box-shadow: none;
+        }
+
+        .tasks {
+            flex-grow: 1;
+            margin-left: 10px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .task-tab {
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
+            padding: 2px 8px;
+            max-width: 160px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+            height: 28px;
+            display: flex;
+            align-items: center;
+        }
+
+        .task-tab.active-task {
+            background-color: #dfdfdf;
+            border-color: #808080 #ffffff #ffffff #808080;
+            font-weight: bold;
+        }
+
+        .systray {
+            background-color: #c0c0c0;
+            border: 2px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            padding: 4px 8px;
+            font-size: 11px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-item {
+            background: #f5f5f5;
+            padding: 4px 8px;
+            border: 1px dashed #808080;
+        }
+
+        @media (max-width: 768px) {
+            #cv-window {
+                width: 98%;
+                left: 1%;
+                top: 5px;
+            }
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="no-print fixed bottom-5 right-5 z-50 flex gap-2">
-        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 flex items-center gap-2">
-            <i class="fas fa-file-pdf"></i> Enregistrer en PDF
-        </button>
-    </div>
-
-    <div class="page-container">
-        <div class="w-full md:w-1/3 bg-slate-900 text-white p-6 flex flex-col gap-6">
-            <div class="text-center mt-8">
-                <h2 class="text-xl font-bold uppercase tracking-wider">Jean-Baptiste</h2>
-                <h1 class="text-2xl font-black uppercase tracking-widest text-blue-400">ANDRIVET</h1>
+    <div class="desktop">
+        
+        <!-- Icons -->
+        <div class="desktop-icons">
+            <div class="icon icon-cv" onclick="openWindow('cv-window')">
+                <div class="icon-graphic"></div>
+                <div class="icon-label">CV_Andrivet.txt</div>
             </div>
-
-            <div class="space-y-3 text-sm mt-4 border-t border-slate-700 pt-6">
-                <div class="flex items-center gap-3"><i class="fas fa-phone-alt text-blue-400 w-5 text-center"></i><span>07.83.20.41.84</span></div>
-                <div class="flex items-center gap-3"><i class="fas fa-envelope text-blue-400 w-5 text-center"></i><span class="text-xs">jeanbaptisteandrivet@gmail.com</span></div>
-                <div class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-blue-400 w-5 text-center"></i><span>73440 Les Belleville</span></div>
-                <div class="flex items-center gap-3"><i class="fas fa-car text-blue-400 w-5 text-center"></i><span>Permis B - Véhiculé</span></div>
-            </div>
-
-            <div class="mt-4">
-                <h3 class="text-lg font-bold uppercase border-b-2 border-blue-500 pb-1 mb-3">Compétences</h3>
-                <div class="mb-4">
-                    <h4 class="font-bold text-blue-300 text-sm mb-1">Systèmes & Virtualisation</h4>
-                    <ul class="text-sm text-slate-300 space-y-1">
-                        <li>• <strong>Proxmox</strong>, <strong>Hyper-V</strong>, VMware</li>
-                        <li>• Linux (Debian/Ubuntu), Win Server</li>
-                        <li>• Active Directory, GPO, Docker</li>
-                    </ul>
-                </div>
-                <div class="mb-4">
-                    <h4 class="font-bold text-blue-300 text-sm mb-1">Réseaux & Sécurité</h4>
-                    <ul class="text-sm text-slate-300 space-y-1">
-                        <li>• Routage <strong>OSPF</strong>, VLAN, NAT, DHCP</li>
-                        <li>• Pare-feu (pfSense, WatchGuard)</li>
-                        <li>• <strong>ACL</strong>, VPN, Sécurisation d'accès</li>
-                    </ul>
-                </div>
-                <div class="mb-4">
-                    <h4 class="font-bold text-blue-300 text-sm mb-1">Outils & Supervision</h4>
-                    <ul class="text-sm text-slate-300 space-y-1">
-                        <li>• <strong>LibreNMS</strong>, Zabbix, GLPI</li>
-                        <li>• <strong>Apache Guacamole</strong></li>
-                        <li>• Scripting PowerShell & Bash</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div>
-                <h3 class="text-lg font-bold uppercase border-b-2 border-blue-500 pb-1 mb-3">Atouts personnels</h3>
-                <p class="text-sm text-slate-300 italic mb-2">• Passionné par le "faire" (Home Lab)</p>
-                <p class="text-sm text-slate-300 italic mb-2">• Autonome et rigoureux</p>
-                <p class="text-sm text-slate-300 italic">• Capacité d'adaptation rapide</p>
+            
+            <div class="icon icon-astro" onclick="openWindow('astro-window')">
+                <div class="icon-graphic"></div>
+                <div class="icon-label">AstroProg.exe</div>
             </div>
         </div>
 
-        <div class="w-full md:w-2/3 bg-white p-8 md:p-10 text-slate-800">
-            <div class="mb-8 border-l-4 border-blue-600 pl-4">
-                <h1 class="text-3xl font-bold uppercase text-slate-900 leading-tight">Admin. Systèmes & Réseaux</h1>
-                <h2 class="text-xl text-blue-600 font-medium mt-1">Technicien Supérieur - Bachelor 3 (Ynov Lyon)</h2>
+        <!-- MAIN WINDOW: CV -->
+        <div id="cv-window" class="window active" onclick="focusWindow('cv-window')">
+            <div class="title-bar">
+                <div class="title-bar-text">Jean-Baptiste Andrivet - Curriculum Vitae</div>
+                <div class="title-bar-controls">
+                    <button class="win-btn">_</button>
+                    <button class="win-btn">?</button>
+                    <button class="win-btn" onclick="closeWindow('cv-window', event)">X</button>
+                </div>
             </div>
-
-            <div class="mb-8">
-                <h3 class="text-lg font-bold uppercase tracking-wider text-slate-700 border-b border-slate-200 pb-2 mb-3"><i class="fas fa-user-circle text-blue-600 mr-2"></i>Profil Professionnel</h3>
-                <p class="text-sm text-slate-600 leading-relaxed text-justify">
-                    Diplômé d'un <strong>BTS SIO (SISR)</strong> et terminant actuellement un <strong>Bachelor 3</strong> à Ynov Lyon, je suis à la recherche d'un poste d'Administrateur Systèmes et Réseaux. Opérationnel sur les technologies de virtualisation (**Proxmox**) et de routage (**OSPF**), j'ai acquis une expérience concrète en milieu municipal. Ma rigueur et ma curiosité technique me permettent de m'intégrer rapidement dans des environnements d'infrastructures complexes.
-                </p>
+            <div class="menu-bar">
+                <div class="menu-item">Fichier</div>
+                <div class="menu-item">Edition</div>
+                <div class="menu-item">Affichage</div>
+                <div class="menu-item">Aide</div>
             </div>
-
-            <div class="mb-8">
-                <h3 class="text-lg font-bold uppercase tracking-wider text-slate-700 border-b border-slate-200 pb-2 mb-4"><i class="fas fa-briefcase text-blue-600 mr-2"></i>Expériences Professionnelles</h3>
+            <div class="window-body">
                 
-                <div class="mb-6 relative pl-4 border-l-2 border-slate-200">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-white"></div>
-                    <div class="flex justify-between items-baseline mb-1">
-                        <h4 class="font-bold text-slate-800">Projets & Home Lab Personnel</h4>
-                        <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Actif</span>
-                    </div>
-                    <p class="text-sm text-slate-600 mt-2">
-                        Mise en place et administration d'une infrastructure complète : 
-                    </p>
-                    <ul class="text-sm text-slate-600 space-y-1 mt-2">
-                        <li>• Virtualisation : Clusters <strong>Proxmox</strong> et environnements <strong>Hyper-V</strong>.</li>
-                        <li>• Réseau : Configuration de routage dynamique <strong>OSPF</strong> et segmentation <strong>VLAN</strong>.</li>
-                        <li>• Sécurité : Déploiement de passerelles <strong>Guacamole</strong> et monitoring via <strong>LibreNMS</strong>.</li>
-                    </ul>
+                <div class="tab-container">
+                    <div class="tab active-tab" onclick="switchTab(event, 'panel-profil')">Identite</div>
+                    <div class="tab" onclick="switchTab(event, 'panel-experience')">Experiences</div>
+                    <div class="tab" onclick="switchTab(event, 'panel-formation')">Formations</div>
+                    <div class="tab" onclick="switchTab(event, 'panel-competences')">Competences & Projets</div>
                 </div>
 
-                <div class="mb-6 relative pl-4 border-l-2 border-slate-200">
-                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
-                    <div class="flex justify-between items-baseline mb-1">
-                        <h4 class="font-bold text-slate-800">Assistant Administrateur Réseaux (Stage)</h4>
-                        <span class="text-xs font-bold text-slate-500 bg-slate-100 px-2 py-1 rounded">2023 – 2024</span>
-                    </div>
-                    <p class="text-xs text-slate-500 font-medium uppercase">Mairie de Saint-Martin-de-Belleville</p>
-                    <ul class="text-sm text-slate-600 space-y-1 mt-2">
-                        <li>• Administration Active Directory (comptes, GPO) et support N1/N2.</li>
-                        <li>• Maintenance préventive du parc et rédaction de fiches techniques.</li>
-                        <li>• Participation à la supervision du réseau municipal.</li>
-                    </ul>
-                </div>
-            </div>
+                <div class="tab-content-wrapper">
+                    
+                    <!-- PANEL 1: PROFIL -->
+                    <div id="panel-profil" class="tab-panel active-panel">
+                        <h1>Jean-Baptiste ANDRIVET</h1>
+                        <p style="font-size: 13px; font-weight: bold; color: #555;">Administrateur Systemes et Reseaux</p>
+                        
+                        <div class="fieldset-container" style="margin-top: 15px;">
+                            <div class="fieldset-title">Coordonnees professionnelles</div>
+                            <div class="contact-grid">
+                                <div class="contact-item"><strong>Telephone :</strong> 07.83.20.41.84</div>
+                                <div class="contact-item"><strong>E-mail :</strong> jeanbaptisteandrivet@gmail.com</div>
+                                <div class="contact-item"><strong>Localisation :</strong> 73440 Les Belleville</div>
+                                <div class="contact-item"><strong>Mobilite :</strong> Permis B - Vehicule</div>
+                            </div>
+                        </div>
 
-            <div>
-                <h3 class="text-lg font-bold uppercase tracking-wider text-slate-700 border-b border-slate-200 pb-2 mb-4"><i class="fas fa-graduation-cap text-blue-600 mr-2"></i>Parcours Académique</h3>
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between items-baseline"><h4 class="font-bold text-slate-800">Bachelor 3 Infrastructure & Réseaux</h4><span class="text-sm font-medium text-blue-600">2025 - 2026</span></div>
-                        <p class="text-xs text-slate-500 uppercase">Ynov Campus, Lyon</p>
+                        <h2>Profil Professionnel</h2>
+                        <p style="text-align: justify;">
+                            Actuellement en Bachelor 3 Administration Infrastructures et Reseaux a l'Ynov Campus de Lyon, je suis a la recherche d'une opportunite d'insertion professionnelle en tant qu'Administrateur Systemes et Reseaux. Mon parcours technique diversifie, associant l'optique photonique, les telecommunications micro-ondes et la filiere informatique (SISR), m'apporte une double competence rare et une adaptabilite elevee. Autonome et methodique, j'administre de maniere proactive mes propres infrastructures virtualisees et concois des solutions de controle appliquees.
+                        </p>
                     </div>
-                    <div>
-                        <div class="flex justify-between items-baseline"><h4 class="font-bold text-slate-800">BTS SIO - Option SISR</h4><span class="text-sm font-medium text-slate-500">2023 - 2025</span></div>
-                        <p class="text-xs text-slate-500 uppercase">Lycée Saint-Exupéry, Saint-Raphaël</p>
+
+                    <!-- PANEL 2: EXPERIENCE -->
+                    <div id="panel-experience" class="tab-panel">
+                        <h2>Experiences Professionnelles</h2>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th class="date-col">Periode</th>
+                                    <th>Poste / Description et Realisations techniques</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="date-col">2023 - 2024</td>
+                                    <td>
+                                        <strong>Assistant Administrateur Reseaux (Stage)</strong><br>
+                                        <em>Mairie de Saint-Martin-de-Belleville (Les Belleville, 73)</em>
+                                        <ul>
+                                            <li>Administration des services d'infrastructure Active Directory (Gestion des comptes utilisateurs, attribution des droits, deploiement de strategies de groupe GPO).</li>
+                                            <li>Support technique de niveaux 1 et 2 aupres des agents municipaux et resolution d'incidents systemes.</li>
+                                            <li>Maintenance preventive et curative du parc informatique; redaction de procedures techniques et de fiches de synthese.</li>
+                                            <li>Participation active a la supervision globale de l'architecture reseau de la municipalite.</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="date-col">Depuis 2023</td>
+                                    <td>
+                                        <strong>Concepteur & Administrateur d'Infrastructure Personnelle (Home Lab)</strong><br>
+                                        <em>Projets independants et auto-hebergement</em>
+                                        <ul>
+                                            <li>Deploiement et maintien en condition operationnelle d'une infrastructure complete structuree sous hyperviseurs <strong>Proxmox VE</strong> et <strong>Hyper-V</strong>.</li>
+                                            <li>Mise en oeuvre de serveurs Linux (Debian, Ubuntu) et Windows Server. Nettoyage et automatisation des taches courantes via scripts Bash et PowerShell.</li>
+                                            <li>Conteneurisation d'applications via <strong>Docker</strong> et isolation reseau via reverse proxy (Nginx).</li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div>
-                        <div class="flex justify-between items-baseline"><h4 class="font-bold text-slate-800">Licence Pro & BTS (Optique/Télécoms)</h4><span class="text-sm font-medium text-slate-500">2021 - 2022</span></div>
-                        <p class="text-xs text-slate-500">Limoges / Grenoble</p>
+
+                    <!-- PANEL 3: FORMATION -->
+                    <div id="panel-formation" class="tab-panel">
+                        <h2>Parcours Academique</h2>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th class="date-col">Annee</th>
+                                    <th>Diplome / Etablissement et Specialisation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="date-col">2025 - 2026</td>
+                                    <td>
+                                        <strong>Bachelor 3 Administration Infrastructures & Reseaux</strong><br>
+                                        Ynov Campus, Lyon - Specialisation dans la gestion d'architectures hybrides et de systemes critiques.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="date-col">2023 - 2025</td>
+                                    <td>
+                                        <strong>BTS SIO (Services Informatiques aux Organisations) - Option SISR</strong><br>
+                                        Lycée Saint-Exupery, Saint-Raphael - Solutions d'infrastructure, systemes et reseaux.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="date-col">2023</td>
+                                    <td>
+                                        <strong>Licence Professionnelle STMO (Systemes Telecoms et Micro-Ondes)</strong><br>
+                                        Universite de Limoges - Architecture radiofrequence, signal et infrastructures de transmission.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="date-col">2021</td>
+                                    <td>
+                                        <strong>BTS Systemes Photoniques</strong><br>
+                                        Grenoble - Optique instrumentale, lasers et technologies d'acquisition opto-electronique.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
+
+                    <!-- PANEL 4: COMPETENCES & PROJETS -->
+                    <div id="panel-competences" class="tab-panel">
+                        <h2>Competences Techniques</h2>
+                        
+                        <div class="contact-grid">
+                            <div style="background:#f9f9f9; padding:8px; border:1px solid #c0c0c0;">
+                                <strong>Systemes & Virtualisation</strong>
+                                <ul>
+                                    <li>Proxmox VE, Hyper-V, VMware ESXi</li>
+                                    <li>Linux (Debian, Ubuntu) / Win Server</li>
+                                    <li>Active Directory, GPO, Docker</li>
+                                </ul>
+                            </div>
+                            <div style="background:#f9f9f9; padding:8px; border:1px solid #c0c0c0;">
+                                <strong>Reseaux & Securite</strong>
+                                <ul>
+                                    <li>Routage dynamique OSPF, ACL, VLAN</li>
+                                    <li>Firewalls (pfSense, WatchGuard), NAT</li>
+                                    <li>VPN (WireGuard, OpenVPN), DHCP</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="background:#f9f9f9; padding:8px; border:1px solid #c0c0c0; margin-top:8px;">
+                            <strong>Supervision & Automatisation</strong><br>
+                            Deploiement d'outils de surveillance d'infrastructure (LibreNMS, Zabbix) et d'outils de gestion de parc (GLPI, Apache Guacamole). Developpement de scripts d'administration en Bash et PowerShell.
+                        </div>
+
+                        <h2 style="margin-top: 15px;">Automatisme, Asservissement & Projets Astronomiques</h2>
+                        <p>
+                            Application pratique de competences en developpement embarque et systemes de positionnement pour l'astronomie instrumentale :
+                        </p>
+                        <ul>
+                            <li><strong>Asservissement de Precision :</strong> Conception et programmation d'algorithmes de suivi sideral et de pointage automatique pour montures equatoriales de telescopes (architecture OnStep).</li>
+                            <li><strong>Controle de Moteurs Pas-a-Pas :</strong> Exploitation de microcontroleurs (Arduino, ESP32) associes a la bibliotheque logicielle `AccelStepper` pour assurer une compensation exacte de la rotation terrestre via profils de rampe adaptatifs.</li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
+
+        <!-- WINDOW 2: ASTRONOMY SUB-INFO -->
+        <div id="astro-window" class="window" onclick="focusWindow('astro-window')">
+            <div class="title-bar">
+                <div class="title-bar-text">AstroProg.exe - Control Status</div>
+                <div class="title-bar-controls">
+                    <button class="win-btn" onclick="closeWindow('astro-window', event)">X</button>
+                </div>
+            </div>
+            <div class="window-body" style="background: #ffffff; padding: 15px;">
+                <p><strong>[HARDWARE CONTROL SYSTEM / ONSTEP INTERFACE]</strong></p>
+                <p>Architecture cible : Microcontroleurs ATMega / ESP32</p>
+                <p>Composants de controle logiciel :</p>
+                <ul style="margin-left: 15px;">
+                    <li>Implementation de profils de rampe de vitesse dynamiques (via bibliotheque AccelStepper).</li>
+                    <li>Gestion et reduction fine des erreurs periodiques mecaniques par micro-pas.</li>
+                    <li>Synchronisation temporelle et calcul de coordonnées siderales en temps reel pour guidage de precision.</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
+
+    <!-- Taskbar -->
+    <div class="taskbar">
+        <div class="start-btn">
+            <div class="start-btn-logo"></div>
+            <strong>Demarrer</strong>
+        </div>
+        
+        <div class="tasks">
+            <div id="task-cv" class="task-tab active-task" onclick="toggleWindowVisibility('cv-window')">
+                CV_Andrivet.txt
+            </div>
+            <div id="task-astro" class="task-tab" style="display:none;" onclick="toggleWindowVisibility('astro-window')">
+                AstroProg.exe
+            </div>
+        </div>
+        
+        <div class="systray">
+            <span id="systray-clock">12:00</span>
+        </div>
+    </div>
+
+    <!-- UI Controller Scripts -->
+    <script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('systray-clock').innerText = hours + ':' + minutes;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function switchTab(event, panelId) {
+            const windowBody = event.target.closest('.window-body');
+            const tabs = windowBody.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active-tab'));
+            
+            const panels = windowBody.querySelectorAll('.tab-panel');
+            panels.forEach(panel => panel.classList.remove('active-panel'));
+            
+            event.target.classList.add('active-tab');
+            document.getElementById(panelId).classList.add('active-panel');
+        }
+
+        function focusWindow(windowId) {
+            document.querySelectorAll('.window').forEach(win => {
+                win.style.zIndex = '10';
+            });
+            const activeWin = document.getElementById(windowId);
+            if (activeWin) {
+                activeWin.style.zIndex = '50';
+            }
+            
+            document.querySelectorAll('.task-tab').forEach(tab => tab.classList.remove('active-task'));
+            if (windowId === 'cv-window') {
+                document.getElementById('task-cv').classList.add('active-task');
+            } else if (windowId === 'astro-window') {
+                document.getElementById('task-astro').classList.add('active-task');
+            }
+        }
+
+        // Open window from icons
+        function openWindow(windowId) {
+            const win = document.getElementById(windowId);
+            win.classList.add('active');
+            
+            if (windowId === 'cv-window') {
+                document.getElementById('task-cv').style.display = 'flex';
+            } else if (windowId === 'astro-window') {
+                document.getElementById('task-astro').style.display = 'flex';
+            }
+            focusWindow(windowId);
+        }
+
+        // Close window via X
+        function closeWindow(windowId, event) {
+            if (event) event.stopPropagation();
+            const win = document.getElementById(windowId);
+            win.classList.remove('active');
+            
+            if (windowId === 'cv-window') {
+                document.getElementById('task-cv').style.display = 'none';
+            } else if (windowId === 'astro-window') {
+                document.getElementById('task-astro').style.display = 'none';
+            }
+        }
+
+        // Toggle windows minimize / focus via taskbar
+        function toggleWindowVisibility(windowId) {
+            const win = document.getElementById(windowId);
+            const isVisible = win.classList.contains('active');
+            const hasMaxZIndex = win.style.zIndex === '50';
+            
+            if (isVisible && hasMaxZIndex) {
+                win.classList.remove('active');
+                if (windowId === 'cv-window') document.getElementById('task-cv').classList.remove('active-task');
+                if (windowId === 'astro-window') document.getElementById('task-astro').classList.remove('active-task');
+            } else {
+                win.classList.add('active');
+                focusWindow(windowId);
+            }
+        }
+    </script>
 </body>
 </html>
