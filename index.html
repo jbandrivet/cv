@@ -359,16 +359,19 @@
 
     <div class="app-container">
         
+        <!-- Header branded with your name -->
         <div class="app-header">
             <div class="app-header-title">andrivet jean-baptiste</div>
         </div>
 
+        <!-- Clean Toolbar Utilities -->
         <div class="app-toolbar">
             <button class="win95-btn" onclick="window.print()">
                 <strong>Imprimer le CV / Enregistrer en PDF</strong>
             </button>
         </div>
 
+        <!-- Interactive Tab Sheet Architecture -->
         <div class="tab-sheet-container">
             <div class="tab-sheet active-tab" onclick="switchSection(this, 'sec-profil')">Profil</div>
             <div class="tab-sheet" onclick="switchSection(this, 'sec-experiences')">Experiences</div>
@@ -376,8 +379,10 @@
             <div class="tab-sheet" onclick="switchSection(this, 'sec-competences')">Competences & Projets</div>
         </div>
 
+        <!-- Main Content Area -->
         <div class="content-frame">
             
+            <!-- SECTION 1: PROFIL & CONTACT -->
             <div id="sec-profil" class="content-section active-section">
                 <h1>Jean-Baptiste ANDRIVET</h1>
                 <div class="subtitle">Administrateur Systemes et Reseaux</div>
@@ -392,12 +397,16 @@
                     </div>
                 </div>
 
-                <h2>Synthese du Profil</h2>
+                <h2>Projet Professionnel & Valeurs</h2>
                 <p>
-                    Actuellement engage dans un parcours de Bachelor 3 en Administration des Infrastructures et des Reseaux au sein d'Ynov Campus (Lyon), je developpe une expertise operationnelle dediee a la fiabilite et a la securisation des architectures d'entreprise. Mon cursus se distingue par une reelle transversalite technique, s'appuyant sur des fondations solides en photonique et en systemes de transmissions micro-ondes, combinees a une expertise informatique ciblee (SISR). Methodique et rigoureux, j'assure le maintien en condition operationnelle d'infrastructures physiques et de clusters virtualises au sein de mon Home Lab.
+                    Actuellement engage dans un parcours de Bachelor 3 en Administration des Infrastructures et des Reseaux au sein d'Ynov Campus (Lyon), j'oriente mon projet professionnel vers les institutions publiques. Le milieu du service public est ideal pour moi, car j'ai a coeur de partager et de mettre a disposition de l'Etat mes competences techniques pour participer a l'interet general. Fort d'une premiere experience concluante en milieu municipal, je comprends les exigences de la continuité de service public et la rigueur indispensable a la resilience des infrastructures étatiques.
+                </p>
+                <p>
+                    <strong>Atouts pour le secteur public :</strong> Strict respect de la discretion professionnelle et de la confidentialite des donnees administratives, sens profond de la neutralite et de la reserve, facilite naturelle a communiquer avec clarte aupres des agents administratifs et adaptabilite face aux exigences reglementaires des collectivites.
                 </p>
             </div>
 
+            <!-- SECTION 2: EXPERIENCES -->
             <div id="sec-experiences" class="content-section">
                 <h2>Parcours Professionnel</h2>
                 
@@ -423,13 +432,14 @@
                             <ul>
                                 <li>Architecture et supervision de clusters d'hyperviseurs de type 1 via <strong>Proxmox VE</strong> et d'environnements distribues sous <strong>Hyper-V</strong>.</li>
                                 <li>Administration de serveurs Linux (Debian, Ubuntu) et d'instances Windows Server; conception de scripts d'automatisation des procedures de maintenance sous Bash et PowerShell.</li>
-                                <li>Industrialisation de services web securises via conteneurs <strong>Docker</strong> et isolation reseau par reverse proxy (Nginx).</li>
+                                <li>Securisation des flux, gestion des certificats et isolation reseau par reverse proxy (Nginx).</li>
                             </ul>
                         </td>
                     </tr>
                 </table>
             </div>
 
+            <!-- SECTION 3: FORMATIONS -->
             <div id="sec-formations" class="content-section">
                 <h2>Cursus Academique</h2>
                 
@@ -465,6 +475,7 @@
                 </table>
             </div>
 
+            <!-- SECTION 4: COMPETENCES & PROJETS -->
             <div id="sec-competences" class="content-section">
                 <h2>Expertise Technique</h2>
                 
@@ -474,7 +485,7 @@
                         <ul>
                             <li>Hyperviseurs : Proxmox VE, Hyper-V, VMware ESXi</li>
                             <li>Systemes : Linux (Debian, Ubuntu), Windows Server</li>
-                            <li>Services : Active Directory, GPO, Docker</li>
+                            <li>Services : Active Directory, GPO, Droits et Privileges</li>
                         </ul>
                     </div>
                     
@@ -507,6 +518,7 @@
 
         </div>
 
+        <!-- Operational Status Bar Footer -->
         <div class="app-footer">
             <div>Statut : Pret</div>
             <div>Objets : 4 Onglets</div>
@@ -514,6 +526,7 @@
 
     </div>
 
+    <!-- UI Core Navigation Engine -->
     <script>
         function switchSection(tabElement, sectionId) {
             document.querySelectorAll('.tab-sheet').forEach(tab => {
