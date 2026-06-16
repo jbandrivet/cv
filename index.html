@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jean-Baptiste Andrivet - CV Administrateur Systemes et Reseaux</title>
+    <title>andrivet jean-baptiste</title>
     <style>
         /* Retro Windows 95 Graphical Component Framework */
         * {
@@ -111,7 +111,7 @@
 
         /* The Main Inner Page Content Frame */
         .content-frame {
-            background-color: #ffffff; /* White document field for absolute ATS read accuracy */
+            background-color: #ffffff;
             border: 2px solid;
             border-color: #808080 #ffffff #ffffff #808080;
             padding: 20px;
@@ -190,7 +190,7 @@
             color: #000080;
         }
 
-        /* Structural tables for clean resume parsers */
+        /* Structural tables */
         .resume-table {
             width: 100%;
             border-collapse: collapse;
@@ -235,12 +235,12 @@
         }
 
         /* -------------------------------------------------- */
-        /* ATS & ONE-PAGE PRINT ENGINE STYLES                */
+        /* ONE-PAGE PRINT ENGINE STYLES (STRICT A4 OVERRIDES) */
         /* -------------------------------------------------- */
         @media print {
             @page {
                 size: A4;
-                margin: 12mm 15mm 12mm 15mm;
+                margin: 8mm 12mm 8mm 12mm;
             }
 
             body, html {
@@ -258,7 +258,7 @@
             }
 
             .app-header, .app-toolbar, .tab-sheet-container, .app-footer {
-                display: none !important; /* Strips administrative wrapper graphics from print */
+                display: none !important; 
             }
 
             .content-frame {
@@ -268,45 +268,54 @@
                 background: #ffffff !important;
             }
 
-            /* Flatten tabs and show all panels linearly in the print document stream */
+            /* Unroll all content panels to print inline sequentially on one single sheet */
             .content-section {
                 display: block !important;
                 page-break-inside: avoid !important;
-                margin-bottom: 15px !important;
+                margin-bottom: 8px !important;
             }
 
             h1 {
-                font-size: 22pt !important;
+                font-size: 18pt !important;
                 color: #000000 !important;
                 text-align: center;
+                margin-bottom: 2px !important;
             }
 
             .subtitle {
-                font-size: 13pt !important;
+                font-size: 12pt !important;
                 color: #000000 !important;
                 text-align: center;
                 border-bottom: 2px solid #000000 !important;
-                margin-bottom: 12px !important;
+                margin-bottom: 8px !important;
+                padding-bottom: 2px !important;
             }
 
             h2 {
-                font-size: 11pt !important;
+                font-size: 10.5pt !important;
                 color: #000000 !important;
                 border-bottom: 1px solid #000000 !important;
-                margin-top: 12px !important;
-                margin-bottom: 6px !important;
+                margin-top: 8px !important;
+                margin-bottom: 4px !important;
+                padding-bottom: 1px !important;
             }
 
             p, li, td {
-                font-size: 9.5pt !important;
-                line-height: 1.35 !important;
+                font-size: 9pt !important;
+                line-height: 1.25 !important;
+                margin-bottom: 4px !important;
+            }
+
+            ul {
+                margin: 2px 0 6px 0 !important;
+                padding-left: 15px !important;
             }
 
             .group-box {
                 border: 1px solid #000000 !important;
                 background: #ffffff !important;
-                padding: 8px !important;
-                margin-bottom: 10px !important;
+                padding: 6px !important;
+                margin-bottom: 8px !important;
             }
 
             .group-box-label {
@@ -325,47 +334,41 @@
             }
 
             .resume-table td {
-                padding: 5px 0 !important;
+                padding: 4px 0 !important;
                 border-bottom: 1px solid #eeeeee !important;
             }
 
             .col-date {
                 color: #000000 !important;
-                width: 90px !important;
+                width: 80px !important;
             }
             
             .skills-print-wrapper {
                 display: flex !important;
-                gap: 20px !important;
+                gap: 15px !important;
             }
             
             .skills-print-wrapper > div {
                 flex: 1 !important;
+                margin-bottom: 0 !important;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Graphical Interface Wrapper -->
     <div class="app-container">
         
-        <!-- Native Component Header Block -->
         <div class="app-header">
-            <div class="app-header-title">Visionneuse de Profil Professionnel - Version 1.95</div>
+            <div class="app-header-title">andrivet jean-baptiste</div>
         </div>
 
-        <!-- System Action Command Bar -->
         <div class="app-toolbar">
             <button class="win95-btn" onclick="window.print()">
-                <strong>Imprimer le CV / Enregistrer en PDF (1 Page)</strong>
+                <strong>Imprimer le CV / Enregistrer en PDF</strong>
             </button>
-            <span style="font-size:11px; color:#555; margin-left:8px;">
-                Optimise pour le tri automatique des DRH (ATS-friendly)
-            </span>
         </div>
 
-        <!-- Interactive Tab Sheet Header Architecture -->
         <div class="tab-sheet-container">
             <div class="tab-sheet active-tab" onclick="switchSection(this, 'sec-profil')">Profil</div>
             <div class="tab-sheet" onclick="switchSection(this, 'sec-experiences')">Experiences</div>
@@ -373,16 +376,14 @@
             <div class="tab-sheet" onclick="switchSection(this, 'sec-competences')">Competences & Projets</div>
         </div>
 
-        <!-- White High-Contrast Document Frame Container -->
         <div class="content-frame">
             
-            <!-- SECTION 1: PROFIL & CONTACT -->
             <div id="sec-profil" class="content-section active-section">
                 <h1>Jean-Baptiste ANDRIVET</h1>
                 <div class="subtitle">Administrateur Systemes et Reseaux</div>
                 
                 <div class="group-box">
-                    <div class="group-box-label">Coordonnees Officielles</div>
+                    <div class="group-box-label">Coordonnees</div>
                     <div class="grid-layout">
                         <div class="grid-cell"><strong>Telephone :</strong> 07.83.20.41.84</div>
                         <div class="grid-cell"><strong>E-mail :</strong> jeanbaptisteandrivet@gmail.com</div>
@@ -397,7 +398,6 @@
                 </p>
             </div>
 
-            <!-- SECTION 2: EXPERIENCES -->
             <div id="sec-experiences" class="content-section">
                 <h2>Parcours Professionnel</h2>
                 
@@ -430,7 +430,6 @@
                 </table>
             </div>
 
-            <!-- SECTION 3: FORMATIONS -->
             <div id="sec-formations" class="content-section">
                 <h2>Cursus Academique</h2>
                 
@@ -466,7 +465,6 @@
                 </table>
             </div>
 
-            <!-- SECTION 4: COMPETENCES & PROJETS -->
             <div id="sec-competences" class="content-section">
                 <h2>Expertise Technique</h2>
                 
@@ -476,14 +474,14 @@
                         <ul>
                             <li>Hyperviseurs : Proxmox VE, Hyper-V, VMware ESXi</li>
                             <li>Systemes : Linux (Debian, Ubuntu), Windows Server</li>
-                            <li>Services : Active Directory, Architectures GPO, Docker</li>
+                            <li>Services : Active Directory, GPO, Docker</li>
                         </ul>
                     </div>
                     
                     <div class="group-box" style="margin-bottom:10px;">
                         <div class="group-box-label">Reseaux & Securite</div>
                         <ul>
-                            <li>Routage & Protocoles : OSPF, VLAN, NAT, Services DHCP</li>
+                            <li>Routage & Protocoles : OSPF, VLAN, NAT, DHCP</li>
                             <li>Securisation : Filtrage Pare-feu (pfSense, WatchGuard), ACL</li>
                             <li>Tunnels : VPN d'infrastructure (WireGuard, OpenVPN)</li>
                         </ul>
@@ -499,7 +497,7 @@
 
                 <h2>Automatisme, Asservissement Electronique & Projets Instrumentaux</h2>
                 <p>
-                    Valorisation de competences en developpement embarque applique a la motorisation fine et aux systemes de positionnement d'outils d'astronomie instrumentale :
+                    Mise en oeuvre de competences en developpement embarque applique a la motorisation fine et aux systemes de positionnement d'outils d'astronomie instrumentale :
                 </p>
                 <ul>
                     <li><strong>Asservissement de Precision :</strong> Integration, câblage et programmation d'algorithmes de suivi sideral automatise dedies aux montures de telescopes via l'ecosysteme firmware OnStep.</li>
@@ -509,27 +507,22 @@
 
         </div>
 
-        <!-- Operational Status Bar Footer -->
         <div class="app-footer">
-            <div>Statut du Systeme : Pret</div>
-            <div>Objets : 4 Sections Chargees</div>
+            <div>Statut : Pret</div>
+            <div>Objets : 4 Onglets</div>
         </div>
 
     </div>
 
-    <!-- UI Core Navigation Engine -->
     <script>
         function switchSection(tabElement, sectionId) {
-            // Drop current active visual classes from tabs
             document.querySelectorAll('.tab-sheet').forEach(tab => {
                 tab.classList.remove('active-tab');
             });
-            // Drop current active visibility from panels
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.remove('active-section');
             });
 
-            // Apply active styles to triggered items
             tabElement.classList.add('active-tab');
             document.getElementById(sectionId).classList.add('active-section');
         }
