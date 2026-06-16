@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>andrivet jean-baptiste</title>
     <style>
-        /* Retro Windows 95 Graphical Component Framework */
+        /* Framework Graphique Rétro Windows 95 (Écran) */
         * {
             box-sizing: border-box;
             font-family: "Arial", "Tahoma", sans-serif;
@@ -16,7 +16,7 @@
         body, html {
             margin: 0;
             padding: 0;
-            background-color: #008080; /* Classic Teal page canvas background */
+            background-color: #008080;
             display: flex;
             justify-content: center;
             align-items: flex-start;
@@ -24,7 +24,6 @@
             padding: 20px 10px;
         }
 
-        /* The main interface container - Styled as an integrated application form wrapper */
         .app-container {
             background-color: #c0c0c0;
             border: 2px solid;
@@ -35,7 +34,6 @@
             padding: 4px;
         }
 
-        /* Banner Header block using Win95 active gradient title styling natively inside the page */
         .app-header {
             background: linear-gradient(90deg, #000080, #1084d0);
             padding: 6px 10px;
@@ -49,7 +47,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Toolbar Section for global utilities */
         .app-toolbar {
             display: flex;
             gap: 6px;
@@ -60,7 +57,6 @@
             align-items: center;
         }
 
-        /* Interactive Windows 95 Style Buttons */
         .win95-btn {
             background-color: #c0c0c0;
             border: 2px solid;
@@ -80,7 +76,6 @@
             padding: 5px 13px 3px 15px;
         }
 
-        /* Tab Sheet Control System (Property Sheet Layout) */
         .tab-sheet-container {
             display: flex;
             padding-left: 6px;
@@ -109,13 +104,12 @@
             background-color: #c0c0c0;
         }
 
-        /* The Main Inner Page Content Frame */
         .content-frame {
             background-color: #ffffff;
             border: 2px solid;
             border-color: #808080 #ffffff #ffffff #808080;
             padding: 20px;
-            min-height: 480px;
+            min-height: 460px;
             box-shadow: inset 1px 1px #808080;
         }
 
@@ -127,13 +121,11 @@
             display: block;
         }
 
-        /* Typography & Layout Elements inside white frame */
         h1 {
             font-size: 22px;
             font-weight: bold;
-            margin: 0 0 4px 0;
+            margin: 0 0 2px 0;
             color: #000080;
-            letter-spacing: 0.5px;
         }
 
         .subtitle {
@@ -148,7 +140,7 @@
         h2 {
             font-size: 13px;
             font-weight: bold;
-            margin: 18px 0 10px 0;
+            margin: 16px 0 8px 0;
             color: #000000;
             border-bottom: 1px solid #808080;
             padding-bottom: 2px;
@@ -161,26 +153,26 @@
         }
 
         ul {
-            margin: 4px 0 12px 0;
-            padding-left: 20px;
+            margin: 4px 0 10px 0;
+            padding-left: 18px;
         }
 
         li {
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             line-height: 1.4;
         }
 
         a {
             color: #000080;
-            text-decoration: underline;
+            text-shadow: none;
+            font-weight: bold;
         }
 
-        /* Classic Group Field Box Layout */
         .group-box {
             border: 2px solid;
             border-color: #808080 #ffffff #ffffff #808080;
-            padding: 14px;
-            margin-bottom: 16px;
+            padding: 12px;
+            margin-bottom: 14px;
             position: relative;
             background: #fafafa;
         }
@@ -195,22 +187,19 @@
             color: #000080;
         }
 
-        /* Structural tables */
         .resume-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 6px;
-            margin-bottom: 10px;
         }
 
         .resume-table td {
-            padding: 8px 4px;
+            padding: 6px 4px;
             vertical-align: top;
             border-bottom: 1px dashed #d0d0d0;
         }
 
         .col-date {
-            width: 100px;
+            width: 85px;
             font-weight: bold;
             color: #000080;
         }
@@ -218,16 +207,13 @@
         .grid-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 10px;
         }
 
         .grid-cell {
-            background: #ffffff;
-            padding: 8px 12px;
-            border: 1px solid #808080;
+            padding: 4px;
         }
 
-        /* Footer System Info Panel */
         .app-footer {
             margin-top: 8px;
             display: flex;
@@ -239,13 +225,17 @@
             font-size: 11px;
         }
 
+        .print-layout-wrapper { display: block; }
+        .print-col-left { display: block; }
+        .print-col-right { display: block; }
+
         /* -------------------------------------------------- */
-        /* ONE-PAGE PRINT ENGINE STYLES (AERED A4 OVERRIDES)  */
+        /* MOTEUR D'IMPRESSION : DESIGN STRICT ÉPURÉ 1 PAGE   */
         /* -------------------------------------------------- */
         @media print {
             @page {
                 size: A4;
-                margin: 12mm 15mm 12mm 15mm; /* Balanced spacing around the sheet */
+                margin: 10mm 12mm 10mm 12mm;
             }
 
             body, html {
@@ -254,7 +244,7 @@
                 padding: 0 !important;
             }
 
-            .app-container {
+            .app-container, .content-frame {
                 width: 100% !important;
                 border: none !important;
                 box-shadow: none !important;
@@ -266,33 +256,45 @@
                 display: none !important; 
             }
 
-            .content-frame {
-                border: none !important;
-                box-shadow: none !important;
-                padding: 0 !important;
-                background: #ffffff !important;
+            /* Transformation en architecture 2 colonnes ultra-propre */
+            .print-layout-wrapper {
+                display: flex !important;
+                gap: 25px !important;
+                width: 100% !important;
             }
 
-            /* Unroll sections linearly with clean breathing room */
+            .print-col-left {
+                flex: 0 0 240px !important;
+                display: block !important;
+            }
+
+            .print-col-right {
+                flex: 1 !important;
+                display: block !important;
+            }
+
             .content-section {
                 display: block !important;
-                page-break-inside: avoid !important;
-                margin-bottom: 14px !important;
+                margin-bottom: 0 !important;
             }
+
+            /* Forçage de l'organisation des blocs pour le format papier */
+            #sec-profil { order: 1; }
+            #sec-experiences { order: 2; }
+            #sec-formations { order: 3; }
+            #sec-competences { order: 4; }
 
             h1 {
                 font-size: 20pt !important;
                 color: #000000 !important;
-                text-align: center;
-                margin-bottom: 4px !important;
+                margin-bottom: 2px !important;
             }
 
             .subtitle {
-                font-size: 13pt !important;
+                font-size: 12pt !important;
                 color: #000000 !important;
-                text-align: center;
                 border-bottom: 2px solid #000000 !important;
-                margin-bottom: 14px !important;
+                margin-bottom: 12px !important;
                 padding-bottom: 4px !important;
             }
 
@@ -300,65 +302,61 @@
                 font-size: 11pt !important;
                 color: #000000 !important;
                 border-bottom: 1px solid #000000 !important;
-                margin-top: 14px !important;
-                margin-bottom: 8px !important;
+                margin-top: 10px !important;
+                margin-bottom: 6px !important;
                 padding-bottom: 2px !important;
             }
 
             p, li, td {
-                font-size: 9.5pt !important;
-                line-height: 1.4 !important;
-                margin-bottom: 6px !important;
+                font-size: 9pt !important;
+                line-height: 1.3 !important;
+                margin-bottom: 4px !important;
+                text-align: left !important;
             }
 
             ul {
-                margin: 4px 0 8px 0 !important;
-                padding-left: 18px !important;
+                margin: 2px 0 6px 0 !important;
+                padding-left: 14px !important;
             }
 
             .group-box {
-                border: 1px solid #000000 !important;
-                background: #ffffff !important;
-                padding: 10px !important;
-                margin-bottom: 12px !important;
+                border: none !important;
+                background: transparent !important;
+                padding: 0 !important;
+                margin-bottom: 10px !important;
             }
 
             .group-box-label {
-                color: #000000 !important;
+                display: none !important; /* Retire les encadrés à l'impression */
             }
 
             .grid-layout {
-                display: flex !important;
-                flex-wrap: wrap !important;
-                justify-content: space-between !important;
-                gap: 8px !important;
+                display: block !important;
             }
 
             .grid-cell {
-                border: none !important;
-                padding: 0 !important;
-                flex: 1 1 auto !important;
-                min-width: 120px !important;
+                padding: 2px 0 !important;
+                font-size: 9pt !important;
             }
 
             .resume-table td {
-                padding: 6px 0 !important;
-                border-bottom: 1px solid #eeeeee !important;
+                padding: 4px 0 !important;
+                border: none !important;
             }
 
             .col-date {
                 color: #000000 !important;
-                width: 85px !important;
+                width: 75px !important;
+                font-size: 9pt !important;
             }
             
-            .skills-print-wrapper {
-                display: flex !important;
-                gap: 20px !important;
-            }
-            
-            .skills-print-wrapper > div {
-                flex: 1 !important;
-                margin-bottom: 0 !important;
+            .web-link-highlight {
+                background: #f5f5f5 !important;
+                padding: 6px !important;
+                border: 1px solid #000000 !important;
+                display: block !important;
+                margin-top: 10px !important;
+                text-align: center !important;
             }
         }
     </style>
@@ -367,19 +365,16 @@
 
     <div class="app-container">
         
-        <!-- Header branded with your name -->
         <div class="app-header">
             <div class="app-header-title">andrivet jean-baptiste</div>
         </div>
 
-        <!-- Clean Toolbar Utilities -->
         <div class="app-toolbar">
             <button class="win95-btn" onclick="window.print()">
-                <strong>Imprimer le CV / Enregistrer en PDF</strong>
+                <strong>Imprimer le CV / Générer le PDF (1 Page)</strong>
             </button>
         </div>
 
-        <!-- Interactive Tab Sheet Architecture -->
         <div class="tab-sheet-container">
             <div class="tab-sheet active-tab" onclick="switchSection(this, 'sec-profil')">Profil</div>
             <div class="tab-sheet" onclick="switchSection(this, 'sec-experiences')">Experiences</div>
@@ -387,166 +382,152 @@
             <div class="tab-sheet" onclick="switchSection(this, 'sec-competences')">Competences & Projets</div>
         </div>
 
-        <!-- Main Content Area -->
         <div class="content-frame">
             
-            <!-- SECTION 1: PROFIL & CONTACT -->
-            <div id="sec-profil" class="content-section active-section">
-                <h1>Jean-Baptiste ANDRIVET</h1>
-                <div class="subtitle">Administrateur Systemes et Reseaux</div>
+            <!-- CONTENEUR DU PORTFOLIO (ÉCRAN / PDF CONTROLLERS) -->
+            <div class="print-layout-wrapper">
                 
-                <div class="group-box">
-                    <div class="group-box-label">Coordonnees</div>
-                    <div class="grid-layout">
-                        <div class="grid-cell"><strong>Telephone :</strong> 07.83.20.41.84</div>
-                        <div class="grid-cell"><strong>E-mail :</strong> jeanbaptisteandrivet@gmail.com</div>
-                        <div class="grid-cell"><strong>Adresse :</strong> 73440 Les Belleville</div>
-                        <div class="grid-cell"><strong>Mobilite :</strong> Permis B - Vehicule</div>
-                        <div class="grid-cell" style="grid-column: span 2;"><strong>Site Web :</strong> <a href="https://jbandrivet.github.io/cv/" target="_blank">jbandrivet.github.io/cv/</a></div>
-                    </div>
-                </div>
-
-                <h2>Projet Professionnel & Valeurs</h2>
-                <p>
-                    Actuellement engage dans un parcours de Bachelor 3 en Administration des Infrastructures et des Reseaux au sein d'Ynov Campus (Lyon), j'oriente mon projet professionnel vers les institutions publiques. Le milieu du service public est ideal pour moi, car j'ai a coeur de partager et de mettre a disposition de l'Etat mes competences techniques pour participer a l'interet general. Fort d'une premiere experience concluante en milieu municipal, je comprends les exigences de la continuité de service public et la rigueur indispensable a la resilience des infrastructures étatiques.
-                </p>
-                <p>
-                    <strong>Atouts pour le secteur public :</strong> Strict respect de la discretion professionnelle et de la confidentialite des donnees administratives, sens profond de la neutralite et de la reserve, facilite naturelle a communiquer avec clarte aupres des agents administratifs et adaptabilite face aux exigences reglementaires des collectivites.
-                </p>
-            </div>
-
-            <!-- SECTION 2: EXPERIENCES -->
-            <div id="sec-experiences" class="content-section">
-                <h2>Parcours Professionnel</h2>
-                
-                <table class="resume-table">
-                    <tr>
-                        <td class="col-date">2023 - 2024</td>
-                        <td>
-                            <strong>Assistant Administrateur Reseaux (Stage)</strong><br>
-                            <em>Mairie de Saint-Martin-de-Belleville (Les Belleville, Savoie)</em>
-                            <ul>
-                                <li>Gestion et maintenance courante de l'annuaire d'entreprise Active Directory (provisioning de comptes utilisateurs, gestion fine des droits d'acces et deploiement de GPO).</li>
-                                <li>Prise en charge du support technique de niveaux 1 et 2 face aux anomalies systemes et materielles rencontrees par les agents.</li>
-                                <li>Garant du suivi du cycle de vie du parc informatique : maintenance de premier niveau et production de documentations techniques de reference.</li>
-                                <li>Observation et assistance a la supervision proactive de l'architecture reseau centralisee de la collectivite.</li>
-                            </ul>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-date">Depuis 2023</td>
-                        <td>
-                            <strong>Administrateur de Plateforme d'Auto-Hebergement (Home Lab)</strong><br>
-                            <em>Projets techniques autonomes</em>
-                            <ul>
-                                <li>Architecture et supervision de clusters d'hyperviseurs de type 1 via <strong>Proxmox VE</strong> et d'environnements distribues sous <strong>Hyper-V</strong>.</li>
-                                <li>Administration de serveurs Linux (Debian, Ubuntu) et d'instances Windows Server; conception de scripts d'automatisation des procedures de maintenance sous Bash et PowerShell.</li>
-                                <li>Securisation des flux, gestion des certificats et isolation reseau par reverse proxy (Nginx).</li>
-                            </ul>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- SECTION 3: FORMATIONS -->
-            <div id="sec-formations" class="content-section">
-                <h2>Cursus Academique</h2>
-                
-                <table class="resume-table">
-                    <tr>
-                        <td class="col-date">2025 - 2026</td>
-                        <td>
-                            <strong>Bachelor 3 Administration Infrastructures & Reseaux</strong><br>
-                            <em>Ynov Campus, Lyon</em> - Industrialisation logicielle des infrastructures, securite des systemes critiques et administration systemes avancee.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-date">2023 - 2025</td>
-                        <td>
-                            <strong>BTS SIO (Services Informatiques aux Organisations) - Option SISR</strong><br>
-                            <em>Lycée Saint-Exupery, Saint-Raphael</em> - Gestion de solutions d'infrastructure, configuration reseau et services applicatifs.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-date">2023</td>
-                        <td>
-                            <strong>Licence Professionnelle STMO (Systemes Telecoms et Micro-Ondes)</strong><br>
-                            <em>Universite de Limoges</em> - Analyse de signal, chaines de transmission radiofrequence, architectures micro-ondes et telecommunications.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-date">2021</td>
-                        <td>
-                            <strong>BTS Systemes Photoniques</strong><br>
-                            <em>Grenoble</em> - Optique de precision, instrumentation embarquee, sources lasers et chaines de capteurs d'acquisition photo-electriques.
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <!-- SECTION 4: COMPETENCES & PROJETS -->
-            <div id="sec-competences" class="content-section">
-                <h2>Expertise Technique</h2>
-                
-                <div class="skills-print-wrapper">
-                    <div class="group-box" style="margin-bottom:10px;">
-                        <div class="group-box-label">Systemes & Virtualisation</div>
-                        <ul>
-                            <li>Hyperviseurs : Proxmox VE, Hyper-V, VMware ESXi</li>
-                            <li>Systemes : Linux (Debian, Ubuntu), Windows Server</li>
-                            <li>Services : Active Directory, GPO, Droits et Privileges</li>
-                        </ul>
-                    </div>
+                <!-- COLONNE GAUCHE (Imprime les infos de contact, formations et lien de manière épurée) -->
+                <div class="print-col-left">
                     
-                    <div class="group-box" style="margin-bottom:10px;">
-                        <div class="group-box-label">Reseaux & Securite</div>
-                        <ul>
-                            <li>Routage & Protocoles : OSPF, VLAN, NAT, DHCP</li>
-                            <li>Securisation : Filtrage Pare-feu (pfSense, WatchGuard), ACL</li>
-                            <li>Tunnels : VPN d'infrastructure (WireGuard, OpenVPN)</li>
-                        </ul>
+                    <!-- BLOC COORDONNÉES -->
+                    <div class="group-box">
+                        <div class="group-box-label">Coordonnees</div>
+                        <div class="grid-layout">
+                            <div class="grid-cell"><strong>Tel :</strong> 07.83.20.41.84</div>
+                            <div class="grid-cell"><strong>Mail :</strong> jeanbaptisteandrivet@gmail.com</div>
+                            <div class="grid-cell"><strong>Lieu :</strong> 73440 Les Belleville</div>
+                            <div class="grid-cell"><strong>Statut :</strong> Permis B - Vehicule</div>
+                        </div>
+                    </div>
+
+                    <!-- FORMATIONS (Remonté à gauche sur le PDF pour équilibrer la page) -->
+                    <div id="sec-formations" class="content-section">
+                        <h2>Cursus Academique</h2>
+                        <table class="resume-table">
+                            <tr>
+                                <td class="col-date">2025 - 2026</td>
+                                <td>
+                                    <strong>Bachelor 3 AIR</strong><br>
+                                    Ynov Campus, Lyon
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-date">2023 - 2025</td>
+                                <td>
+                                    <strong>BTS SIO (SISR)</strong><br>
+                                    Lycée Saint-Exupery
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-date">2023</td>
+                                <td>
+                                    <strong>Licence Pro STMO</strong><br>
+                                    Univ. de Limoges
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-date">2021</td>
+                                <td>
+                                    <strong>BTS S. Photoniques</strong><br>
+                                    Grenoble
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- LINK HIGHLIGHT -->
+                    <div class="web-link-highlight">
+                        <strong>Consulter le site complet :</strong><br>
+                        <a href="https://jbandrivet.github.io/cv/" target="_blank" style="font-size: 9.5pt;">jbandrivet.github.io/cv/</a>
                     </div>
                 </div>
 
-                <div class="group-box" style="margin-bottom:14px;">
-                    <div class="group-box-label">Supervision & Outils de Production</div>
-                    <p style="margin: 0;">
-                        Deploiement de solutions de metrologie (LibreNMS, Zabbix) et d'outils de gestion de parc et d'acces (GLPI, Apache Guacamole). Automatisation de taches courantes via scripts Bash et PowerShell.
-                    </p>
-                </div>
+                <!-- COLONNE DROITE (Profil, Expériences, Compétences synthétisées) -->
+                <div class="print-col-right">
+                    
+                    <!-- PROFIL -->
+                    <div id="sec-profil" class="content-section active-section">
+                        <h1>Jean-Baptiste ANDRIVET</h1>
+                        <div class="subtitle">Administrateur Systemes et Reseaux</div>
+                        
+                        <h2>Vocation Service Public</h2>
+                        <p>
+                            Actuellement en Bachelor 3 Administration Infrastructures et Reseaux, j'oriente mon parcours vers les institutions publiques. Mon objectif est de mettre a disposition de l'Etat mes competences techniques pour participer activement a l'interet general. Fort d'une experience en milieu municipal, j'assimile avec rigueur les imperatifs de continuite de service, de neutralite et de discretion professionnelle propres aux collectivites.
+                        </p>
+                    </div>
 
-                <h2>Automatisme, Asservissement Electronique & Projets Instrumentaux</h2>
-                <p>
-                    Mise en oeuvre de competences en developpement embarque applique a la motorisation fine et aux systemes de positionnement d'outils d'astronomie instrumentale :
-                </p>
-                <ul>
-                    <li><strong>Asservissement de Precision :</strong> Integration, câblage et programmation d'algorithmes de suivi sideral automatise dedies aux montures de telescopes via un firmware sur mesure concu par mes soins.</li>
-                    <li><strong>Pilotage Matériel de Moteurs :</strong> Developpement et calibrage de profils de rampes cinematiques sur microcontroleurs (architectures Arduino / ESP32) exploitant la bibliothèque logicielle `AccelStepper` pour la commande fine de moteurs pas-a-pas.</li>
-                </ul>
+                    <!-- EXPERIENCES -->
+                    <div id="sec-experiences" class="content-section">
+                        <h2>Parcours Professionnel</h2>
+                        <table class="resume-table">
+                            <tr>
+                                <td class="col-date">2023 - 2024</td>
+                                <td>
+                                    <strong>Assistant Administrateur Reseaux (Stage)</strong><br>
+                                    <em>Mairie de Saint-Martin-de-Belleville</em>
+                                    <ul>
+                                        <li>Administration de l'infrastructure Active Directory (comptes, GPO).</li>
+                                        <li>Support technique de niveaux 1 et 2 aux agents de la collectivite.</li>
+                                        <li>Maintenance curative/preventive du parc informatique municipal.</li>
+                                        <li>Aide a la supervision de l'architecture reseau centrale.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-date">Depuis 2023</td>
+                                <td>
+                                    <strong>Administrateur d'Architecture (Home Lab)</strong><br>
+                                    <em>Gestion d'infrastructure autonome</em>
+                                    <ul>
+                                        <li>Supervision d'hyperviseurs de type 1 (**Proxmox VE** et **Hyper-V**).</li>
+                                        <li>Administration de serveurs Linux (Debian, Ubuntu) et Windows Server.</li>
+                                        <li>Automatisation par scripts Bash / PowerShell et securisation Nginx.</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- COMPETENCES -->
+                    <div id="sec-competences" class="content-section">
+                        <h2>Expertise Technique & Automatisme</h2>
+                        
+                        <p style="margin-bottom: 6px;">
+                            <strong>Infrastructures :</strong> Proxmox, Hyper-V, VMware, Active Directory, Windows Server, Linux. Reseaux et Securite : routage OSPF, VLAN, pare-feu pfSense/WatchGuard, ACL, VPN (WireGuard/OpenVPN). Outils de supervision : LibreNMS, Zabbix, GLPI, Guacamole.
+                        </p>
+                        
+                        <p style="margin-bottom: 2px;">
+                            <strong>Systemes embarques & Astronomie :</strong>
+                        </p>
+                        <ul>
+                            <li>Conception et developpement de firmwares sur mesure pour l'asservissement et le suivi sideral automatique de montures instrumentales.</li>
+                            <li>Pilotage cinematique de moteurs pas-a-pas sur microcontroleurs (Arduino, ESP32) via la bibliotheque `AccelStepper`.</li>
+                        </ul>
+                    </div>
+
+                </div>
             </div>
 
         </div>
 
-        <!-- Operational Status Bar Footer -->
         <div class="app-footer">
-            <div>Statut : Pret</div>
-            <div>Objets : 4 Onglets</div>
+            <div>Statut : Profil Épuré Candidature</div>
+            <div>Mode : Impression 1 Page Active</div>
         </div>
 
     </div>
 
-    <!-- UI Core Navigation Engine -->
     <script>
         function switchSection(tabElement, sectionId) {
-            document.querySelectorAll('.tab-sheet').forEach(tab => {
-                tab.classList.remove('active-tab');
-            });
-            document.querySelectorAll('.content-section').forEach(section => {
-                section.classList.remove('active-section');
-            });
+            // Uniquement actif sur écran pour l'interactivité des onglets
+            if (window.matchMedia('screen').matches) {
+                document.querySelectorAll('.tab-sheet').forEach(tab => tab.classList.remove('active-tab'));
+                document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active-section'));
 
-            tabElement.classList.add('active-tab');
-            document.getElementById(sectionId).classList.add('active-section');
+                tabElement.classList.add('active-tab');
+                document.getElementById(sectionId).classList.add('active-section');
+            }
         }
     </script>
 </body>
