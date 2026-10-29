@@ -3,7 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>andrivet jean-baptiste</title>
+    <title>Jean-Baptiste Andrivet — Administrateur systèmes et réseaux</title>
+    <meta name="description" content="CV de Jean-Baptiste Andrivet, administrateur systèmes et réseaux (Bachelor 3 Ynov) : Proxmox, Zabbix, Nginx, OpenVPN, Linux, Windows Server. Mobilité Île-de-France.">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Jean-Baptiste Andrivet — Administrateur systèmes et réseaux">
+    <meta property="og:description" content="Bachelor 3 Administration des infrastructures et réseaux. Home lab Proxmox en production, supervision Zabbix, projets libres en Rust et embarqué. Mobilité Île-de-France.">
+    <meta property="og:url" content="https://jbandrivet.github.io/cv/">
+    <meta property="og:locale" content="fr_FR">
     <style>
         /* Base Windows 95 Graphical Framework */
         * {
@@ -36,8 +42,28 @@
 
         .app-header {
             background: linear-gradient(90deg, #000080, #1084d0);
-            padding: 6px 10px;
+            padding: 3px 3px 3px 8px;
             margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .title-buttons {
+            display: flex;
+            gap: 2px;
+        }
+
+        .title-buttons span {
+            width: 18px;
+            height: 16px;
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #ffffff #0a0a0a #0a0a0a #ffffff;
+            box-shadow: inset -1px -1px #808080;
+            font: bold 10px/13px "Arial", sans-serif;
+            text-align: center;
+            color: #000000;
         }
 
         .app-header-title {
@@ -94,6 +120,11 @@
             border-top-left-radius: 2px;
             border-top-right-radius: 2px;
             user-select: none;
+        }
+
+        .tab-sheet:focus-visible {
+            outline: 1px dotted #000000;
+            outline-offset: -4px;
         }
 
         .tab-sheet.active-tab {
@@ -232,6 +263,115 @@
             display: none;
         }
 
+        a.plain {
+            color: #000000;
+            text-decoration: none;
+        }
+
+        a.plain:hover {
+            text-decoration: underline;
+        }
+
+        .project-list li {
+            margin-bottom: 8px;
+        }
+
+        .taskbar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 30px;
+            background: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            box-shadow: 0 -1px #dfdfdf;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px 4px;
+            z-index: 10;
+        }
+
+        .start-btn {
+            padding: 2px 8px;
+            gap: 5px;
+        }
+
+        .start-logo {
+            display: inline-grid;
+            grid-template-columns: 6px 6px;
+            gap: 1px;
+            transform: skewX(-8deg);
+        }
+
+        .start-logo i {
+            width: 6px;
+            height: 5px;
+            display: block;
+        }
+
+        .taskbar-clock {
+            border: 1px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            padding: 3px 10px;
+            font-size: 11px;
+        }
+
+        body {
+            padding-bottom: 50px;
+        }
+
+        /* -------------------------------------------------- */
+        /* TÉLÉPHONE : fenêtre pleine largeur, rien de coupé  */
+        /* -------------------------------------------------- */
+        @media screen and (max-width: 820px) {
+            body, html {
+                display: block;
+                padding: 0 0 40px 0;
+            }
+
+            .app-container {
+                width: 100%;
+            }
+
+            .tab-sheet-container {
+                flex-wrap: wrap;
+                padding-left: 0;
+                margin-bottom: 0;
+            }
+
+            .tab-sheet {
+                flex: 1 1 auto;
+                text-align: center;
+                margin-bottom: 2px;
+            }
+
+            .content-frame {
+                padding: 12px;
+                min-height: 0;
+            }
+
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .grid-cell {
+                overflow-wrap: anywhere;
+            }
+
+            p {
+                text-align: left;
+            }
+
+            .col-date {
+                width: 64px;
+            }
+
+            .taskbar-clock {
+                display: none;
+            }
+        }
+
         /* -------------------------------------------------- */
         /* STRICT ONE-PAGE COMPACT PRINT GRID ARCHITECTURE    */
         /* -------------------------------------------------- */
@@ -243,6 +383,7 @@
 
             body, html {
                 background: #ffffff !important;
+                display: block !important;
                 min-height: 0 !important;
                 padding: 0 !important;
                 overflow: visible !important;
@@ -256,7 +397,7 @@
                 padding: 0 !important;
             }
 
-            .app-header, .app-toolbar, .tab-sheet-container, .app-footer, .hide-on-print {
+            .app-header, .app-toolbar, .tab-sheet-container, .app-footer, .taskbar, .hide-on-print {
                 display: none !important; 
             }
 
@@ -384,6 +525,15 @@
             .skills-print-wrapper {
                 display: block !important;
             }
+
+            #sec-competences .group-box ul {
+                margin: 0 !important;
+            }
+
+            a, a.plain {
+                color: #000000 !important;
+                text-decoration: none !important;
+            }
         }
     </style>
 </head>
@@ -392,7 +542,8 @@
     <div class="app-container">
         
         <div class="app-header">
-            <div class="app-header-title">andrivet jean-baptiste</div>
+            <div class="app-header-title">CV - Jean-Baptiste Andrivet</div>
+            <div class="title-buttons" aria-hidden="true"><span>_</span><span>□</span><span>×</span></div>
         </div>
 
         <div class="app-toolbar">
@@ -401,11 +552,11 @@
             </button>
         </div>
 
-        <div class="tab-sheet-container">
-            <div class="tab-sheet active-tab" onclick="switchSection(this, 'sec-profil')">Profil</div>
-            <div class="tab-sheet" onclick="switchSection(this, 'sec-experiences')">Expériences</div>
-            <div class="tab-sheet" onclick="switchSection(this, 'sec-formations')">Formations</div>
-            <div class="tab-sheet" onclick="switchSection(this, 'sec-competences')">Compétences & Projets</div>
+        <div class="tab-sheet-container" role="tablist">
+            <div class="tab-sheet active-tab" role="tab" tabindex="0" aria-selected="true" aria-controls="sec-profil" onclick="switchSection(this, 'sec-profil')">Profil</div>
+            <div class="tab-sheet" role="tab" tabindex="0" aria-selected="false" aria-controls="sec-experiences" onclick="switchSection(this, 'sec-experiences')">Expériences</div>
+            <div class="tab-sheet" role="tab" tabindex="0" aria-selected="false" aria-controls="sec-formations" onclick="switchSection(this, 'sec-formations')">Formations</div>
+            <div class="tab-sheet" role="tab" tabindex="0" aria-selected="false" aria-controls="sec-competences" onclick="switchSection(this, 'sec-competences')">Compétences & Projets</div>
         </div>
 
         <div class="content-frame">
@@ -423,19 +574,19 @@
                 <div class="group-box">
                     <div class="group-box-label">Coordonnées</div>
                     <div class="grid-layout">
-                        <div class="grid-cell"><strong>Téléphone :</strong> 07.83.20.41.84</div>
-                        <div class="grid-cell"><strong>E-mail :</strong> jeanbaptisteandrivet@gmail.com</div>
-                        <div class="grid-cell"><strong>Adresse :</strong> 359 rue de Preyerand, 73440 Les Belleville</div>
-                        <div class="grid-cell"><strong>Mobilité :</strong> Permis B - Véhiculé</div>
+                        <div class="grid-cell"><strong>Téléphone :</strong> <a class="plain" href="tel:+33783204184">07.83.20.41.84</a></div>
+                        <div class="grid-cell"><strong>E-mail :</strong> <a class="plain" href="mailto:jeanbaptisteandrivet@gmail.com">jeanbaptisteandrivet@gmail.com</a></div>
+                        <div class="grid-cell"><strong>Mobilité :</strong> Île-de-France - Permis B, véhiculé</div>
+                        <div class="grid-cell"><strong>GitHub :</strong> <a class="plain" href="https://github.com/jbandrivet" target="_blank" rel="noopener">github.com/jbandrivet</a></div>
                     </div>
                 </div>
 
-                <h2>Projet Professionnel & Valeurs</h2>
+                <h2>Profil</h2>
                 <p>
-                    Diplômé d'un Bachelor 3 en Administration des Infrastructures et des Réseaux d'Ynov Campus (Lyon), j'oriente mon projet professionnel vers les institutions publiques. Le milieu du service public est idéal pour moi, car j'ai à cœur de partager et de mettre à disposition de l'État mes compétences techniques pour participer à l'intérêt général. Fort d'une première expérience concluante en milieu municipal, je comprends les exigences de la continuité de service public et la rigueur indispensable à la résilience des infrastructures étatiques.
+                    Administrateur systèmes et réseaux, diplômé d'un Bachelor 3 Administration des Infrastructures et des Réseaux (Ynov Campus Lyon). Deux stages en mairie et un home lab exploité en production depuis 2023 : virtualisation Proxmox, supervision Zabbix, reverse proxies Nginx, VPN. Je recherche un poste d'administrateur systèmes et réseaux en Île-de-France, de préférence dans le service public.
                 </p>
                 <p>
-                    <strong>Atouts pour le secteur public :</strong> Strict respect de la discrétion professionnelle et de la confidentialité des données administratives, sens profond de la neutralité et du devoir de réserve, communication claire auprès des agents administratifs et adaptabilité face aux obligations réglementaires des collectivités.
+                    <strong>Atouts pour le secteur public :</strong> discrétion et confidentialité des données, neutralité et devoir de réserve, sens de la continuité de service, communication claire avec les agents.
                 </p>
                 <p>
                     <strong>Centres d'intérêt :</strong> Passionné d'astronomie, j'ai également un fort attrait pour l'optique photonique liée à l'instrumentation.
@@ -466,10 +617,12 @@
                             <strong>Administrateur de Plateforme d'Auto-Hébergement</strong><br>
                             <em>Home Lab Personnel</em>
                             <ul>
-                                <li>Architecture et supervision d'hyperviseurs de type 1 via Proxmox VE et d'environnements sous Hyper-V sur serveurs physiques (type HP ProLiant / Dell EMC).</li>
-                                <li>Administration de serveurs Linux (Debian, Ubuntu) et d'instances Windows Server.</li>
-                                <li>Conception de scripts de maintenance et d'automatisation des tâches sous Bash et PowerShell.</li>
-                                <li>Sécurisation des flux, gestion des certificats et isolation réseau par reverse proxy Nginx.</li>
+                                <li>Exploitation d'un hyperviseur Proxmox VE hébergeant une vingtaine de VM Debian et Ubuntu, en adressage fixe et documentées.</li>
+                                <li>Supervision de l'ensemble avec Zabbix 7 (agents, cartes, alertes) et diagnostic d'incidents systemd.</li>
+                                <li>Deux reverse proxies Nginx (externe et interne), certificats, DNS dynamique et accès distant par OpenVPN.</li>
+                                <li>Hébergement d'applications web (PHP, Python) et de services systemd, mises à jour automatisées (cron, apt).</li>
+                                <li>Sécurisation : correction d'injections de commandes, authentification, comptes à droits restreints, sudoers ciblés.</li>
+                                <li>Serveur de calcul GPU piloté par Wake-on-LAN, extinction automatisée, IA générative locale (Ollama).</li>
                             </ul>
                         </td>
                     </tr>
@@ -520,8 +673,8 @@
                     <div class="group-box" style="margin-bottom:6px;">
                         <div class="group-box-label">Systèmes & Virtualisation</div>
                         <ul>
-                            <li>Proxmox VE, Hyper-V, VMware ESXi</li>
-                            <li>Linux (Debian, Ubuntu), Windows Server</li>
+                            <li>Proxmox VE, Hyper-V, VMware ESXi, Docker</li>
+                            <li>Linux (Debian, Ubuntu, systemd), Windows Server</li>
                             <li>Active Directory, GPO, Droits & Privilèges</li>
                         </ul>
                     </div>
@@ -529,9 +682,9 @@
                     <div class="group-box" style="margin-bottom:6px;">
                         <div class="group-box-label">Réseaux & Sécurité</div>
                         <ul>
-                            <li>Routage OSPF, VLAN, NAT, DHCP</li>
-                            <li>Pare-feu (pfSense, WatchGuard), ACL</li>
-                            <li>VPN (WireGuard, OpenVPN)</li>
+                            <li>Routage OSPF, VLAN, NAT, DHCP (Kea)</li>
+                            <li>Pare-feu (pfSense, OPNsense, WatchGuard), ACL</li>
+                            <li>VPN (WireGuard, OpenVPN), reverse proxy Nginx</li>
                         </ul>
                     </div>
                 </div>
@@ -539,17 +692,14 @@
                 <div class="group-box" style="margin-bottom:8px;">
                     <div class="group-box-label">Supervision & Outils</div>
                     <p style="margin: 0; padding: 2px 0;">
-                        Métrologie et gestion de parc (LibreNMS, Zabbix, GLPI, Apache Guacamole). Scripting Bash et PowerShell.
+                        Supervision et gestion de parc : Zabbix 7, LibreNMS, GLPI, Apache Guacamole. Scripts Bash, PowerShell et Python ; Git/GitHub ; PHP, Rust ; paquets Debian (.deb).
                     </p>
                 </div>
 
-                <h2>Automatisme & Systèmes Instrumentaux</h2>
-                <p>
-                    Développement embarqué appliqué aux systèmes de positionnement d'outils d'astronomie instrumentale :
-                </p>
-                <ul>
-                    <li><strong>Asservissement de Précision :</strong> Programmation d'algorithmes de suivi sidéral automatisé pour montures de télescopes via un firmware sur mesure (projet <a href="https://github.com/jbandrivet/goto_mega" target="_blank">goto_mega</a>) conçu par mes soins.</li>
-                    <li><strong>Pilotage Matériel :</strong> Profils de rampes cinématiques sur microcontrôleurs (Arduino / ESP32) via la bibliothèque AccelStepper pour la commande fine de moteurs pas-à-pas.</li>
+                <h2>Projets Libres (GitHub)</h2>
+                <ul class="project-list">
+                    <li><strong><a href="https://github.com/jbandrivet/freeoptical" target="_blank" rel="noopener">FreeOptical</a> :</strong> logiciel libre de conception optique écrit en Rust (tracé de rayons, front d'onde, FTM), interfaces graphique et texte, versions publiées avec paquets .deb.</li>
+                    <li><strong><a href="https://github.com/jbandrivet/gotoandrivet" target="_blank" rel="noopener">GotoAndrivet</a> :</strong> contrôleur GoTo de télescope (Arduino Mega, Teensy) : firmware de suivi sidéral, rampes de moteurs pas-à-pas, protocole LX200, cartes électroniques KiCad, paquet .deb et site auto-hébergé.</li>
                 </ul>
             </div>
 
@@ -562,18 +712,45 @@
 
     </div>
 
+    <div class="taskbar hide-on-print" aria-hidden="true">
+        <button class="win95-btn start-btn" type="button" tabindex="-1" onclick="window.print()" title="Imprimer le CV">
+            <span class="start-logo"><i style="background:#ff0000"></i><i style="background:#00a000"></i><i style="background:#0000ff"></i><i style="background:#ffcc00"></i></span>
+            Démarrer
+        </button>
+        <div class="taskbar-clock" id="clock"></div>
+    </div>
+
     <script>
         function switchSection(tabElement, sectionId) {
             document.querySelectorAll('.tab-sheet').forEach(tab => {
                 tab.classList.remove('active-tab');
+                tab.setAttribute('aria-selected', 'false');
             });
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.remove('active-section');
             });
 
             tabElement.classList.add('active-tab');
+            tabElement.setAttribute('aria-selected', 'true');
             document.getElementById(sectionId).classList.add('active-section');
         }
+
+        document.querySelectorAll('.tab-sheet').forEach(tab => {
+            tab.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    tab.click();
+                }
+            });
+        });
+
+        function tick() {
+            const d = new Date();
+            document.getElementById('clock').textContent =
+                String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+        }
+        tick();
+        setInterval(tick, 30000);
     </script>
 </body>
 </html>
